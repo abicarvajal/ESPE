@@ -104,6 +104,39 @@ public class CRUD {
         
     }
     
+    public Integer asignaPlaza(String seccion,Integer disponibilidad,Integer discapacidad){
+        Integer plaza = 0;
+        Connection con = conexion.getConnection();
+        Statement st;
+        ResultSet rs;
+        String sql = "SELECT ID_PLAZA FROM PLAZA,PARQUEADERO"
+                + " WHERE PARQUEADERO_NOMBRE='"+seccion+"' AND PLAZA.DISPONIBILIDAD= "+disponibilidad
+                +" AND PLAZA.PLAZADISCAPACIDAD= "+discapacidad+" AND plaza.parqueadero_id=parqueadero.parqueadero_id";
+        System.out.println(sql);
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery(sql);
+            System.out.println(rs.next());
+            plaza = Integer.valueOf(rs.getString(1));
+            System.out.println(plaza);
+            //while (rs.next()) {
+                //plaza = Integer.valueOf(rs.getString(1));
+                //System.out.println(" ID_PLAZA: " + rs.getString(1));
+                //System.out.println(" NOMBRE PARQUEADERO: " + rs.getString(2));
+                //System.out.println(" DISPONIBILIDAD: " + rs.getString(3));
+                //System.out.println(" DISCAPACIDAD: " + rs.getString(4));
+                //System.out.println(" =================================\n");
+            //}
+            //cerrar la conexion
+            st.close();
+            con.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, " <<ERROR>>\n <<NO SE PUDO ACCEDER A LOS DATOS>>\n");
+        }
+        return plaza;
+    }
+    
     public String recuperarPassword(String loginUser){
         Connection con = conexion.getConnection();
         String guardado = "";

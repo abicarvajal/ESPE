@@ -5,6 +5,7 @@
  */
 package modelo.parqueadero;
 
+import controlador.parqueadero.CRUD;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -66,19 +67,21 @@ public class AsignacionDAO {
         AsignacionDAO registrarAsignacion = new AsignacionDAO();
         String seccion = datosCliente.get(3);
         System.out.println(datosCliente.get(3));
-        
+        Integer discapacidad=-1;
         if (datosCliente.get(2).compareTo("S") == 1) { //Si tiene discapacidad
             datosParqueadero.add("Parqueadero con Preferencia");
             System.out.println(seccion);
+            discapacidad=1;
             switch(seccion){
                 case "ADMISIÓN Y REGISTRO":
                         System.out.println("ENTRA");
                         datosParqueadero.add("Docencia");
-                        //datosParqueadero.add();
+                        asignarPlaza("DOCENCIA",discapacidad);
                     break;
                 case "BIENESTAR ESTUDIANTIL":
                         System.out.println("ENTRA 2");
                         datosParqueadero.add("Docencia");
+                        asignarPlaza(datosParqueadero.get(2),discapacidad);
                     break;
                 case "DPTO. CIENCIAS ECON.  ADMIN. COMER":
                         System.out.println("ENTRA 2");
@@ -119,23 +122,23 @@ public class AsignacionDAO {
                     break;
                 case "CENTRO EDUCACIÓN CONTINUA":
                         System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero Biblioteca");
+                        datosParqueadero.add("Biblioteca");
                     break;
                 case "DPTO. CIENCIAS DE LA COMPUTACION":
                         System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero Biblioteca");
+                        datosParqueadero.add("Biblioteca");
                     break;    
                 case "DPTO. DE CIENCIAS DE LA VIDA":
                         System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero Biblioteca");
+                        datosParqueadero.add("Biblioteca");
                     break; 
                 case "DPTO.CIENCIAS ENERGIA Y MECANICA":
                         System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero Biblioteca");
+                        datosParqueadero.add("Biblioteca");
                     break;
                 case "DPTO. ELECTRICA Y ELECTRONICA":
                         System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero Biblioteca");
+                        datosParqueadero.add("Biblioteca");
                     break; 
                 case "INSTITUTO DE IDIOMAS":
                         System.out.println("ENTRA 2");
@@ -177,59 +180,69 @@ public class AsignacionDAO {
                     break; 
                 case "EDUCACIÓN PRESENCIAL":
                         System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero de Docencia");
+                        datosParqueadero.add("Docencia");
                     break;
                 case "UNIDAD ADMISION REGISTRO":
                         System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero de Docencia");
+                        datosParqueadero.add("Docencia");
                     break; 
                  case "BIBLIOTECA":
                         System.out.println("ENTRA");
-                        datosParqueadero.add("Parqueadero Biblioteca");
+                        datosParqueadero.add("Biblioteca");
                         //datosParqueadero.add();
                     break;
                 case "CENTRO DE NANOCIENCIA Y NANOTEC.":
                         System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero Biblioteca");
+                        datosParqueadero.add("Biblioteca");
                     break;
                 case "CENTRO DE POSTGRADOS":
                         System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero Biblioteca");
+                        datosParqueadero.add("Biblioteca");
                     break;
                 case "CENTRO EDUCACIÓN CONTINUA":
                         System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero Biblioteca");
+                        datosParqueadero.add("Biblioteca");
                     break;
                 case "DPTO. CIENCIAS DE LA COMPUTACION":
                         System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero Biblioteca");
+                        datosParqueadero.add("Biblioteca");
                     break;    
                 case "DPTO. DE CIENCIAS DE LA VIDA":
                         System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero Biblioteca");
+                        datosParqueadero.add("Biblioteca");
                     break; 
                 case "DPTO.CIENCIAS ENERGIA Y MECANICA":
                         System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero Biblioteca");
+                        datosParqueadero.add("Biblioteca");
                     break;
                 case "DPTO. ELECTRICA Y ELECTRONICA":
                         System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero Biblioteca");
+                        datosParqueadero.add("Biblioteca");
                     break; 
                 case "INSTITUTO DE IDIOMAS":
                         System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero Biblioteca");
+                        datosParqueadero.add("Biblioteca");
                     break; 
                 case "TECNOLOGIA DE INF.Y COMUNICACIONES":
                         System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero Biblioteca");
+                        datosParqueadero.add("Biblioteca");
                     break;
                 } 
         }
         return datosParqueadero;
         
     }
+    
+    public Integer asignarPlaza(String seccion,Integer disponibilidad){
+        Integer plaza=0;
+        CRUD crud = new CRUD();
+        plaza=crud.asignaPlaza(seccion,1,disponibilidad);
+        //System.out.println("plaza ="+plaza);
+        return plaza;
+    }
 }   
+
+
         
         
 

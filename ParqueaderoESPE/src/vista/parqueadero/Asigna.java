@@ -347,7 +347,7 @@ public class Asigna extends javax.swing.JFrame {
         if (!datosCliente.isEmpty()) {
             datosAsignacion = asignacion.asignarPlaza(datosCliente);
             System.out.println("Asigna = "+datosAsignacion.get(0));
-            JOptionPane.showMessageDialog(null,datosAsignacion.get(1)+" Lugar:"+datosAsignacion.get(2)+" N° de Plaza: ");
+            JOptionPane.showMessageDialog(null,datosAsignacion.get(1)+" Lugar:"+datosAsignacion.get(0)+" N° de Plaza: ");
             //JOptionPane.showMessageDialog(null, datosAsignacion.get(1) + " Plaza N° " + datosAsignacion.get(2), datosAsignacion.get(0), WIDTH);
         }else{
             JOptionPane.showMessageDialog(null, "Ingrese el ID del usuario");
