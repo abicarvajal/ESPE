@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Abi/Documents/ParqueaderoGIT/Proyecto-Parqueadero/ParqueaderoESPE/src/parqueaderoespe/ParqueaderoESPE.java</file>
+            <file>file:/C:/Users/Abi/Documents/ParqueaderoGIT/Proyecto-Parqueadero/ParqueaderoESPE/src/modelo/parqueadero/AsignacionDAO.java</file>
+            <file>file:/C:/Users/Abi/Documents/ParqueaderoGIT/Proyecto-Parqueadero/ParqueaderoESPE/src/controlador/parqueadero/controladorBotones.java</file>
+            <file>file:/C:/Users/Abi/Documents/ParqueaderoGIT/Proyecto-Parqueadero/ParqueaderoESPE/src/controlador/parqueadero/CRUD.java</file>
+            <file>file:/C:/Users/Abi/Documents/ParqueaderoGIT/Proyecto-Parqueadero/ParqueaderoESPE/src/controlador/parqueadero/controladorLogin.java</file>
+            <file>file:/C:/Users/Abi/Documents/ParqueaderoGIT/Proyecto-Parqueadero/ParqueaderoESPE/src/modelo/parqueadero/Conexion.java</file>
+            <file>file:/C:/Users/Abi/Documents/ParqueaderoGIT/Proyecto-Parqueadero/ParqueaderoESPE/src/controlador/parqueadero/ControladorArchivos.java</file>
+            <file>file:/C:/Users/Abi/Documents/ParqueaderoGIT/Proyecto-Parqueadero/ParqueaderoESPE/src/modelo/parqueadero/AsignacionPlaza.java</file>
+            <file>file:/C:/Users/Abi/Documents/ParqueaderoGIT/Proyecto-Parqueadero/ParqueaderoESPE/src/modelo/parqueadero/Cliente.java</file>
+            <file>file:/C:/Users/Abi/Documents/ParqueaderoGIT/Proyecto-Parqueadero/ParqueaderoESPE/src/vista/parqueadero/Busqueda.java</file>
+            <file>file:/C:/Users/Abi/Documents/ParqueaderoGIT/Proyecto-Parqueadero/ParqueaderoESPE/src/vista/parqueadero/Asigna.java</file>
+            <file>file:/C:/Users/Abi/Documents/ParqueaderoGIT/Proyecto-Parqueadero/ParqueaderoESPE/src/vista/parqueadero/Elimina.java</file>
+            <file>file:/C:/Users/Abi/Documents/ParqueaderoGIT/Proyecto-Parqueadero/ParqueaderoESPE/src/vista/parqueadero/Login.java</file>
+            <file>file:/C:/Users/Abi/Documents/ParqueaderoGIT/Proyecto-Parqueadero/ParqueaderoESPE/src/vista/parqueadero/Home.java</file>
+            <file>file:/C:/Users/Abi/Documents/ParqueaderoGIT/Proyecto-Parqueadero/ParqueaderoESPE/src/modelo/parqueadero/Parqueadero.java</file>
+            <file>file:/C:/Users/Abi/Documents/ParqueaderoGIT/Proyecto-Parqueadero/ParqueaderoESPE/src/modelo/parqueadero/Vehiculo.java</file>
+            <file>file:/C:/Users/Abi/Documents/ParqueaderoGIT/Proyecto-Parqueadero/ParqueaderoESPE/src/controlador/parqueadero/ControladorAsignacion.java</file>
+            <file>file:/C:/Users/Abi/Documents/ParqueaderoGIT/Proyecto-Parqueadero/ParqueaderoESPE/src/vista/parqueadero/Actualizacion.java</file>
+        </group>
+    </open-files>
+</project-private>
