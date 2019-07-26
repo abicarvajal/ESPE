@@ -40,11 +40,11 @@ public class Asigna extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        bntHome = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnAsignar = new javax.swing.JButton();
+        btnBusqueda = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -68,44 +68,54 @@ public class Asigna extends javax.swing.JFrame {
         jPanel1.setMaximumSize(new java.awt.Dimension(853, 46));
         jPanel1.setPreferredSize(new java.awt.Dimension(853, 46));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/btnInicio.png"))); // NOI18N
-        jButton2.setBorder(null);
-        jButton2.setMaximumSize(new java.awt.Dimension(90, 46));
-        jButton2.setMinimumSize(new java.awt.Dimension(90, 46));
-        jButton2.setPreferredSize(new java.awt.Dimension(90, 46));
-
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/btnEditar.png"))); // NOI18N
-        jButton3.setBorder(null);
-        jButton3.setMaximumSize(new java.awt.Dimension(90, 46));
-        jButton3.setMinimumSize(new java.awt.Dimension(90, 46));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        bntHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/btnInicio.png"))); // NOI18N
+        bntHome.setBorder(null);
+        bntHome.setMaximumSize(new java.awt.Dimension(90, 46));
+        bntHome.setMinimumSize(new java.awt.Dimension(90, 46));
+        bntHome.setPreferredSize(new java.awt.Dimension(90, 46));
+        bntHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                bntHomeActionPerformed(evt);
             }
         });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/btnAsignar.png"))); // NOI18N
-        jButton4.setBorder(null);
-        jButton4.setMaximumSize(new java.awt.Dimension(90, 46));
-        jButton4.setMinimumSize(new java.awt.Dimension(90, 46));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/btnEditar.png"))); // NOI18N
+        btnEditar.setBorder(null);
+        btnEditar.setMaximumSize(new java.awt.Dimension(90, 46));
+        btnEditar.setMinimumSize(new java.awt.Dimension(90, 46));
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnEditarActionPerformed(evt);
             }
         });
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/btnBuscar.png"))); // NOI18N
-        jButton5.setBorder(null);
-        jButton5.setMaximumSize(new java.awt.Dimension(90, 46));
-        jButton5.setMinimumSize(new java.awt.Dimension(90, 46));
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/btnEliminar.png"))); // NOI18N
-        jButton1.setAlignmentX(698.0F);
-        jButton1.setAlignmentY(150.0F);
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAsignar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/btnAsignar.png"))); // NOI18N
+        btnAsignar.setBorder(null);
+        btnAsignar.setMaximumSize(new java.awt.Dimension(90, 46));
+        btnAsignar.setMinimumSize(new java.awt.Dimension(90, 46));
+        btnAsignar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAsignarActionPerformed(evt);
+            }
+        });
+
+        btnBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/btnBuscar.png"))); // NOI18N
+        btnBusqueda.setBorder(null);
+        btnBusqueda.setMaximumSize(new java.awt.Dimension(90, 46));
+        btnBusqueda.setMinimumSize(new java.awt.Dimension(90, 46));
+        btnBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBusquedaActionPerformed(evt);
+            }
+        });
+
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/btnEliminar.png"))); // NOI18N
+        btnEliminar.setAlignmentX(698.0F);
+        btnEliminar.setAlignmentY(150.0F);
+        btnEliminar.setBorder(null);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
             }
         });
 
@@ -115,36 +125,36 @@ public class Asigna extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bntHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(62, 62, 62)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(96, 96, 96))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bntHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnBusqueda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(btnAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton2.getAccessibleContext().setAccessibleName("btnInicio");
-        jButton3.getAccessibleContext().setAccessibleName("btnEditar");
-        jButton4.getAccessibleContext().setAccessibleName("btnAsignar");
-        jButton5.getAccessibleContext().setAccessibleName("btnBuscar");
-        jButton1.getAccessibleContext().setAccessibleName("btnEliminar");
+        bntHome.getAccessibleContext().setAccessibleName("btnInicio");
+        btnEditar.getAccessibleContext().setAccessibleName("btnEditar");
+        btnAsignar.getAccessibleContext().setAccessibleName("btnAsignar");
+        btnBusqueda.getAccessibleContext().setAccessibleName("btnBuscar");
+        btnEliminar.getAccessibleContext().setAccessibleName("btnEliminar");
 
         jLabel1.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
         jLabel1.setText("Asignación de Parqueadero");
@@ -297,17 +307,23 @@ public class Asigna extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btnAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarActionPerformed
+        dispose();
+        Asigna asigna = new Asigna();
+        asigna.show();
+    }//GEN-LAST:event_btnAsignarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        dispose();
+        Actualizacion actualiza = new Actualizacion();
+        actualiza.show();
+    }//GEN-LAST:event_btnEditarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        dispose();
+        Elimina elimina = new Elimina();
+        elimina.show();
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void colocarDatos(ArrayList<String> datos) {
         txtNombreCliente.setText(datos.get(0) +" "+ datos.get(1)); //Nombre
@@ -351,19 +367,38 @@ public class Asigna extends javax.swing.JFrame {
         if (!datosCliente.isEmpty()) {
             datosAsignacion = asignacion.asignarPlaza(datosCliente);
             System.out.println(datosAsignacion);
-            JOptionPane.showMessageDialog(null,"Seccion: "+datosAsignacion.get(0)+"\nLugar: Edicio "+datosAsignacion.get(1)+"\nN° de Plaza: "+datosAsignacion.get(2));
-            asignacion.cambiarDisponibilidad(datosAsignacion.get(2));
-            DateFormat hourdateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            DateFormat houri = new SimpleDateFormat("HH:mm:ss");
-            System.out.println("Hora y fecha: "+hourdateFormat.format(date));
-            System.out.println("Hora y fecha: "+houri.format(hora));
-            asignacion.insertarAsignacion(asignacion.obtenerPlazasAsignadas(), datosCliente.get(3),Integer.valueOf(datosAsignacion.get(2)),date,hora);
+            if(datosAsignacion.get(2)!=null){
+                JOptionPane.showMessageDialog(null,"Seccion: "+datosAsignacion.get(0)+"\nLugar: Edicio "+datosAsignacion.get(1)+"\nN° de Plaza: "+datosAsignacion.get(2));
+                //asignacion.cambiarDisponibilidad(datosAsignacion.get(2));
+                DateFormat hourdateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                DateFormat houri = new SimpleDateFormat("HH:mm:ss");
+                
+                System.out.println("Hora y fecha: "+hourdateFormat.format(date));
+                System.out.println("Hora y fecha: "+houri.format(hora));
+                //INSERTA EN BD EL PUESTO Y EL USUARIO AL QUE PERTENECE
+                asignacion.insertarAsignacion((asignacion.obtenerPlazasAsignadas()+1), datosCliente.get(4),Integer.valueOf(datosAsignacion.get(2)),date,hora);
+                limpiarDatos();
+            }else
+                JOptionPane.showMessageDialog(null,"No existen plazas disponibles");
+            
         }else{
             JOptionPane.showMessageDialog(null, "Ingrese el ID del usuario");
         }
 
 
     }//GEN-LAST:event_btnAsignaPlazaActionPerformed
+
+    private void bntHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntHomeActionPerformed
+        dispose();
+        Home home = new Home();
+        home.show();
+    }//GEN-LAST:event_bntHomeActionPerformed
+
+    private void btnBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusquedaActionPerformed
+        dispose();
+        Busqueda busqueda= new Busqueda();
+        busqueda.show();
+    }//GEN-LAST:event_btnBusquedaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -402,14 +437,14 @@ public class Asigna extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton bntHome;
     public javax.swing.JButton btnAsignaPlaza;
+    public javax.swing.JButton btnAsignar;
+    public javax.swing.JButton btnBusqueda;
     private javax.swing.JButton btnConsultar;
+    public javax.swing.JButton btnEditar;
+    public javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnNuevaConsulta;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
