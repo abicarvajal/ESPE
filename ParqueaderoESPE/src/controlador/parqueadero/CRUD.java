@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
+import java.util.Date;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 import modelo.parqueadero.Cliente;
@@ -119,15 +121,7 @@ public class CRUD {
             System.out.println(rs.next());
             plaza = Integer.valueOf(rs.getString(1));
             System.out.println(plaza);
-            //while (rs.next()) {
-                //plaza = Integer.valueOf(rs.getString(1));
-                //System.out.println(" ID_PLAZA: " + rs.getString(1));
-                //System.out.println(" NOMBRE PARQUEADERO: " + rs.getString(2));
-                //System.out.println(" DISPONIBILIDAD: " + rs.getString(3));
-                //System.out.println(" DISCAPACIDAD: " + rs.getString(4));
-                //System.out.println(" =================================\n");
-            //}
-            //cerrar la conexion
+            
             st.close();
             con.close();
         } catch (SQLException e) {
@@ -135,6 +129,71 @@ public class CRUD {
             JOptionPane.showMessageDialog(null, " <<ERROR>>\n <<NO SE PUDO ACCEDER A LOS DATOS>>\n");
         }
         return plaza;
+    }
+    
+    public void cambiarDisponibilidad(String id_plaza,Integer disponibilidad){
+        Connection con = conexion.getConnection();
+        Statement st;
+        
+        String sql = "UPDATE PLAZA SET DISPONIBILIDAD =" + disponibilidad +  " WHERE ID_PLAZA = "+ id_plaza+"";
+        System.out.println(sql);
+        try {
+            st = con.createStatement();
+            
+            int confirmar = st.executeUpdate(sql);
+            if (confirmar == 1) {
+                System.out.println("\n <<REGISTRO MODIFICADO CON EXITO>>\n");
+            } else {
+                System.out.println(" <<ERROR>>\n <<REGISTRO NO PUDO SER MODIFICADO>>\n");
+            }
+            //cerrar la conexion
+            st.close();
+            con.close();
+            System.out.println("\n <<REGISTRO MODIFICADO CON EXITO>>\n");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, " <<ERROR>>\n <<NO SE PUDO ACTUALIZAR EL USUARIO>>\n");
+        }
+    }
+    
+    public Integer retornaNumeroPlazas(){
+        Integer contador=0;
+        Connection con = conexion.getConnection();
+        Statement st;
+        ResultSet rs;
+        String sql = "SELECT COUNT(AS_NUMERO_PLAZA) FROM ASIGNACION_PLAZA";
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery(sql);
+            rs.next();
+            contador=(Integer.valueOf(rs.getString(1)));
+            //cerrar la conexion
+            st.close();
+            con.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, " <<ERROR>>\n <<NO SE PUDO ACCEDER A LOS DATOS>>\n");
+        }
+        return contador;
+    }
+    
+    public void asignarQuery(Integer id_num_plaza,String cliente_id_banner,Integer id_plaza,Date fecha,Date hora){
+        //cargar la conexion
+        Connection con = conexion.getConnection();
+        Statement st;
+
+        //Crear sentencia sql
+        String sql = "INSERT INTO ASIGNACION_PLAZA VALUES ('" + id_num_plaza + "','" + cliente_id_banner + "','" + id_plaza + "','" +fecha+ "','"+hora+ "')";
+        try {
+            st = con.createStatement();
+            st.executeUpdate(sql);
+
+            //cerrar la conexion
+            st.close();
+            con.close();
+            System.out.println("\n <<REGISTRO INSERTADO CON EXITO>>\n");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, " <<ERROR>>\n <<NO SE PUDO REGISTRAR EL CANTON>>\n");
+        }
     }
     
     public String recuperarPassword(String loginUser){

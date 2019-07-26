@@ -6,7 +6,10 @@
 package vista.parqueadero;
 
 import controlador.parqueadero.ControladorAsignacion;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import modelo.parqueadero.AsignacionDAO;
 import modelo.parqueadero.AsignacionPlaza;
@@ -21,7 +24,8 @@ public class Asigna extends javax.swing.JFrame {
      * Creates new form Home
      */
     ArrayList<String> datosCliente = new ArrayList<>();
-
+    Date date = new Date();
+    Date hora = new Date();
     public Asigna() {
         initComponents();
     }
@@ -342,13 +346,18 @@ public class Asigna extends javax.swing.JFrame {
         ControladorAsignacion nuevaAsignacion = new ControladorAsignacion();
         AsignacionDAO asignacion = new AsignacionDAO();
         ArrayList<String> datosAsignacion = new ArrayList<>();
-        
+        System.out.println(datosCliente);
         
         if (!datosCliente.isEmpty()) {
             datosAsignacion = asignacion.asignarPlaza(datosCliente);
-            System.out.println("Asigna = "+datosAsignacion.get(0));
-            JOptionPane.showMessageDialog(null,datosAsignacion.get(1)+" Lugar:"+datosAsignacion.get(0)+" N° de Plaza: ");
-            //JOptionPane.showMessageDialog(null, datosAsignacion.get(1) + " Plaza N° " + datosAsignacion.get(2), datosAsignacion.get(0), WIDTH);
+            System.out.println(datosAsignacion);
+            JOptionPane.showMessageDialog(null,"Seccion: "+datosAsignacion.get(0)+"\nLugar: Edicio "+datosAsignacion.get(1)+"\nN° de Plaza: "+datosAsignacion.get(2));
+            asignacion.cambiarDisponibilidad(datosAsignacion.get(2));
+            DateFormat hourdateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            DateFormat houri = new SimpleDateFormat("HH:mm:ss");
+            System.out.println("Hora y fecha: "+hourdateFormat.format(date));
+            System.out.println("Hora y fecha: "+houri.format(hora));
+            asignacion.insertarAsignacion(asignacion.obtenerPlazasAsignadas(), datosCliente.get(3),Integer.valueOf(datosAsignacion.get(2)),date,hora);
         }else{
             JOptionPane.showMessageDialog(null, "Ingrese el ID del usuario");
         }

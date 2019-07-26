@@ -10,7 +10,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 import modelo.parqueadero.Conexion;
@@ -23,6 +25,7 @@ public class AsignacionDAO {
 
     private Conexion conexion;
     private Scanner teclado = new Scanner(System.in);
+    CRUD crud = new CRUD();
     
     public AsignacionDAO() {
         
@@ -63,200 +66,195 @@ public class AsignacionDAO {
     }
     
     public ArrayList<String> asignarPlaza(ArrayList<String> datosCliente){
-        ArrayList<String> datosParqueadero = new ArrayList<>();
-        AsignacionDAO registrarAsignacion = new AsignacionDAO();
+        Integer plaza=-1;
+        ArrayList<String> datosAsignacion = new ArrayList<String>();
         String seccion = datosCliente.get(3);
+        String lugarParqueo="";
         System.out.println(datosCliente.get(3));
         Integer discapacidad=-1;
+        datosAsignacion.add(seccion);
         if (datosCliente.get(2).compareTo("S") == 1) { //Si tiene discapacidad
-            datosParqueadero.add("Parqueadero con Preferencia");
             System.out.println(seccion);
             discapacidad=1;
             switch(seccion){
                 case "ADMISIÓN Y REGISTRO":
-                        System.out.println("ENTRA");
-                        datosParqueadero.add("Docencia");
-                        asignarPlaza("DOCENCIA",discapacidad);
+                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        lugarParqueo="DOCENCIA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break;
                 case "BIENESTAR ESTUDIANTIL":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Docencia");
-                        asignarPlaza(datosParqueadero.get(2),discapacidad);
+                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        lugarParqueo="DOCENCIA";
                     break;
                 case "DPTO. CIENCIAS ECON.  ADMIN. COMER":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Docencia");
+                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        lugarParqueo="DOCENCIA";
                     break;
                 case "DPTO. CIENCIAS EXACTAS":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Docencia");
+                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        lugarParqueo="DOCENCIA";
                     break;
                 case "DPTO. CIENCIAS HUMANAS Y SOCIALES":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Docencia");
+                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        lugarParqueo="DOCENCIA";
                     break;    
                 case "DPTO. SEGURIDAD Y DEFENSA":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Docencia");
+                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        lugarParqueo="DOCENCIA";
                     break; 
                 case "EDUCACIÓN PRESENCIAL":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero de Docencia");
+                       plaza=asignarPlaza("DOCENCIA",discapacidad);
+                       lugarParqueo="DOCENCIA";
                     break;
                 case "UNIDAD ADMISION REGISTRO":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero de Docencia");
+                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        lugarParqueo="DOCENCIA";
                     break; 
                  case "BIBLIOTECA":
-                        System.out.println("ENTRA");
-                        datosParqueadero.add("Parqueadero Biblioteca");
-                        //datosParqueadero.add();
+                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        lugarParqueo="BIBLIOTECA";
                     break;
                 case "CENTRO DE NANOCIENCIA Y NANOTEC.":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero Biblioteca");
+                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        lugarParqueo="BIBLIOTECA";
                     break;
                 case "CENTRO DE POSTGRADOS":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero Biblioteca");
+                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        lugarParqueo="BIBLIOTECA";
                     break;
                 case "CENTRO EDUCACIÓN CONTINUA":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Biblioteca");
+                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        lugarParqueo="BIBLIOTECA";
                     break;
                 case "DPTO. CIENCIAS DE LA COMPUTACION":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Biblioteca");
+                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        lugarParqueo="BIBLIOTECA";
                     break;    
                 case "DPTO. DE CIENCIAS DE LA VIDA":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Biblioteca");
+                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        lugarParqueo="BIBLIOTECA";
                     break; 
                 case "DPTO.CIENCIAS ENERGIA Y MECANICA":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Biblioteca");
+                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        lugarParqueo="BIBLIOTECA";
                     break;
                 case "DPTO. ELECTRICA Y ELECTRONICA":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Biblioteca");
+                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        lugarParqueo="BIBLIOTECA";
                     break; 
                 case "INSTITUTO DE IDIOMAS":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero Biblioteca");
+                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        lugarParqueo="BIBLIOTECA";
                     break; 
                 case "TECNOLOGIA DE INF.Y COMUNICACIONES":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero Biblioteca");
+                       plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                       lugarParqueo="BIBLIOTECA";
                     break;
                 }      
         }else if(datosCliente.get(2).compareTo("N") == 1){
-            datosParqueadero.add("Parqueadero sin Preferencia");
             System.out.println(seccion);
+            discapacidad =0;
             switch(seccion){
                 case "ADMISIÓN Y REGISTRO":
-                        System.out.println("ENTRA");
-                        datosParqueadero.add("Parqueadero de Docencia");
-                        //datosParqueadero.add();
+                       plaza=asignarPlaza("DOCENCIA",discapacidad);
+                       lugarParqueo="DOCENCIA";
                     break;
                 case "BIENESTAR ESTUDIANTIL":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero de Docencia");
+                       plaza=asignarPlaza("DOCENCIA",discapacidad);
+                       lugarParqueo="DOCENCIA";
                     break;
                 case "DPTO. CIENCIAS ECON.  ADMIN. COMER":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero de Docencia");
+                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        lugarParqueo="DOCENCIA";
                     break;
                 case "DPTO. CIENCIAS EXACTAS":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero de Docencia");
+                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        lugarParqueo="DOCENCIA";
                     break;
                 case "DPTO. CIENCIAS HUMANAS Y SOCIALES":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero de Docencia");
+                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        lugarParqueo="DOCENCIA";
                     break;    
                 case "DPTO. SEGURIDAD Y DEFENSA":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Parqueadero de Docencia");
+                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        lugarParqueo="DOCENCIA";
                     break; 
                 case "EDUCACIÓN PRESENCIAL":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Docencia");
+                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        lugarParqueo="DOCENCIA";
                     break;
                 case "UNIDAD ADMISION REGISTRO":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Docencia");
+                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        lugarParqueo="DOCENCIA";
                     break; 
                  case "BIBLIOTECA":
-                        System.out.println("ENTRA");
-                        datosParqueadero.add("Biblioteca");
-                        //datosParqueadero.add();
+                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        lugarParqueo="BIBLIOTECA";
                     break;
                 case "CENTRO DE NANOCIENCIA Y NANOTEC.":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Biblioteca");
+                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        lugarParqueo="BIBLIOTECA";
                     break;
                 case "CENTRO DE POSTGRADOS":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Biblioteca");
+                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        lugarParqueo="BIBLIOTECA";
                     break;
                 case "CENTRO EDUCACIÓN CONTINUA":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Biblioteca");
+                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        lugarParqueo="BIBLIOTECA";
                     break;
                 case "DPTO. CIENCIAS DE LA COMPUTACION":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Biblioteca");
+                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        lugarParqueo="BIBLIOTECA";
                     break;    
                 case "DPTO. DE CIENCIAS DE LA VIDA":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Biblioteca");
+                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        lugarParqueo="BIBLIOTECA";
                     break; 
                 case "DPTO.CIENCIAS ENERGIA Y MECANICA":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Biblioteca");
+                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        lugarParqueo="BIBLIOTECA";
                     break;
                 case "DPTO. ELECTRICA Y ELECTRONICA":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Biblioteca");
+                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        lugarParqueo="BIBLIOTECA";
                     break; 
                 case "INSTITUTO DE IDIOMAS":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Biblioteca");
+                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        lugarParqueo="BIBLIOTECA";
                     break; 
                 case "TECNOLOGIA DE INF.Y COMUNICACIONES":
-                        System.out.println("ENTRA 2");
-                        datosParqueadero.add("Biblioteca");
+                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        lugarParqueo="BIBLIOTECA";
                     break;
                 } 
+            
         }
-        return datosParqueadero;
-        
+        return datosAsignacion;
+    }
+    
+    public void cambiarDisponibilidad(String id_plaza){
+        crud.cambiarDisponibilidad(id_plaza, 0);
+    }
+    
+    public Integer obtenerPlazasAsignadas(){
+        int contador=0;
+        contador=crud.retornaNumeroPlazas();
+        return contador;
+    }
+    
+    public void insertarAsignacion(Integer id_num_plaza,String cliente_id_banner,Integer id_plaza,Date fecha,Date hora){
+        crud.asignarQuery(id_num_plaza,cliente_id_banner,id_plaza,fecha,hora);
     }
     
     public Integer asignarPlaza(String seccion,Integer disponibilidad){
-        Integer plaza=0;
-        CRUD crud = new CRUD();
+        Integer plaza=0;    
         plaza=crud.asignaPlaza(seccion,1,disponibilidad);
-        //System.out.println("plaza ="+plaza);
         return plaza;
     }
 }   
 
-
-        
-        
-
-/*if (((datosCliente.get(3).compareTo("ADMISIÓN Y REGISTRO") == 1))) || (datosCliente.get(3).compareTo("BIENESTAR ESTUDIANTIL") == 1)))
-                    || (datosCliente.get(3).compareTo("DPTO. CIENCIAS ECON.  ADMIN. COMER.") == 1) 
-                    || (datosCliente.get(3).compareTo("DPTO. CIENCIAS EXACTAS") == 1)
-                    || (datosCliente.get(3).compareTo("DPTO. CIENCIAS HUMANAS Y SOCIALES") == 1) || (datosCliente.get(3).compareTo("DPTO. CIENCIAS TIERRA Y CONSTRUCC.") == 1) 
-                    || (datosCliente.get(3).compareTo("DPTO. SEGURIDAD Y DEFENSA") == 1) || (datosCliente.get(3).compareTo("EDUCACION CONTINUA") == 1)
-                    || (datosCliente.get(3).compareTo("EDUCACIÓN PRESENCIAL") == 1) || (datosCliente.get(3).compareTo("FINANCIERO") == 1)
-                    || (datosCliente.get(3).compareTo("UNIDAD ADMISION REGISTRO") == 1))) {
-                //Asignacion  en el Bar para personas con discapacidad
-                System.out.println("ENTRO AQUI");
-                datosParqueadero.add("Parqueadero de Docencia");
-                datosParqueadero.add("5"); //Numero de plaza*/
  /*  } else if (datosCliente.get(3).compareTo("BIBLIOTECA") == 1 || datosCliente.get(3).compareTo("CENTRO DE NANOCIENCIA Y NANOTEC.") == 1
                     || datosCliente.get(3).compareTo("CENTRO DE POSTGRADOS") == 1 || datosCliente.get(3).compareTo("CENTRO EDUCACIÓN CONTINUA") == 1
                     || datosCliente.get(3).compareTo("DPTO. CIENCIAS DE LA COMPUTACION") == 1 || datosCliente.get(3).compareTo("DPTO. DE CIENCIAS DE LA VIDA") == 1
