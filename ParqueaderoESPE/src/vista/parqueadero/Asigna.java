@@ -6,6 +6,7 @@
 package vista.parqueadero;
 
 import controlador.parqueadero.ControladorAsignacion;
+import controlador.parqueadero.Validaciones;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,8 +27,10 @@ public class Asigna extends javax.swing.JFrame {
     ArrayList<String> datosCliente = new ArrayList<>();
     Date date = new Date();
     Date hora = new Date();
+
     public Asigna() {
         initComponents();
+        btnAsignaPlaza.setEnabled(false);
     }
 
     /**
@@ -171,6 +174,11 @@ public class Asigna extends javax.swing.JFrame {
         txtidCliente.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         txtidCliente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(229, 229, 229), 5, true));
         txtidCliente.setPreferredSize(new java.awt.Dimension(364, 47));
+        txtidCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtidClienteKeyTyped(evt);
+            }
+        });
 
         txtUnidadTrabajo.setEditable(false);
         txtUnidadTrabajo.setBackground(new java.awt.Color(229, 229, 229));
@@ -310,13 +318,22 @@ public class Asigna extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void colocarDatos(ArrayList<String> datos) {
-        txtNombreCliente.setText(datos.get(0) +" "+ datos.get(1)); //Nombre
-        if (datos.get(2).compareTo("S")==1) {
+        txtNombreCliente.setText(datos.get(0) + " " + datos.get(1)); //Nombre
+        if (datos.get(2).compareTo("S") == 1) {
             txtMovilidadReducida.setText("Si"); //Movilidad Reducida
         } else {
             txtMovilidadReducida.setText("No");
         }
         txtUnidadTrabajo.setText(datos.get(3)); //Unidad de Trabajo
+    }
+
+    public void validarSoloNumeros(java.awt.event.KeyEvent evt) {
+        char validar = evt.getKeyChar();
+        if (!Character.isLetterOrDigit(validar) || !Character.isDigit(validar) ) {
+            getToolkit().beep();
+            evt.consume();
+            //JOptionPane.showMessageDialog(rootPane, "No ingrese letras");
+        }
     }
 
     private void limpiarDatos() {
@@ -327,18 +344,37 @@ public class Asigna extends javax.swing.JFrame {
     }
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         // TODO add your handling code here:
+        Validaciones validar = new Validaciones();
         String idCliente;
         ControladorAsignacion controladorAsignacion = new ControladorAsignacion();
         idCliente = txtidCliente.getText();
-        datosCliente = controladorAsignacion.obtenerDatosCliente(idCliente);
-        datosCliente.add(idCliente);
-        colocarDatos(datosCliente);
+        //datosCliente = controladorAsignacion.obtenerDatosCliente(idCliente);
+        //datosCliente.add(idCliente);
+        //colocarDatos(datosCliente);
+        if (validar.validarCampoCedula(idCliente)) {
+            datosCliente = controladorAsignacion.obtenerDatosCliente(idCliente);
+            datosCliente.add(idCliente);
+            /*datosCliente.add("1");
+            datosCliente.add("2");
+            datosCliente.add("S");
+            datosCliente.add("4");
+            datosCliente.add("5");*/
+            colocarDatos(datosCliente);
+            btnAsignaPlaza.setEnabled(true);
+            txtidCliente.setEditable(false);
+        }else{
+            txtidCliente.setText("");
+        }
+
+
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnNuevaConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaConsultaActionPerformed
         // TODO add your handling code here:
         limpiarDatos();
         datosCliente.clear();
+        btnAsignaPlaza.setEnabled(false);
+        txtidCliente.setEditable(true);
     }//GEN-LAST:event_btnNuevaConsultaActionPerformed
 
     private void btnAsignaPlazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignaPlazaActionPerformed
@@ -347,23 +383,28 @@ public class Asigna extends javax.swing.JFrame {
         AsignacionDAO asignacion = new AsignacionDAO();
         ArrayList<String> datosAsignacion = new ArrayList<>();
         System.out.println(datosCliente);
-        
+
         if (!datosCliente.isEmpty()) {
             datosAsignacion = asignacion.asignarPlaza(datosCliente);
             System.out.println(datosAsignacion);
-            JOptionPane.showMessageDialog(null,"Seccion: "+datosAsignacion.get(0)+"\nLugar: Edicio "+datosAsignacion.get(1)+"\nN° de Plaza: "+datosAsignacion.get(2));
+            JOptionPane.showMessageDialog(null, "Seccion: " + datosAsignacion.get(0) + "\nLugar: Edicio " + datosAsignacion.get(1) + "\nN° de Plaza: " + datosAsignacion.get(2));
             asignacion.cambiarDisponibilidad(datosAsignacion.get(2));
             DateFormat hourdateFormat = new SimpleDateFormat("dd/MM/yyyy");
             DateFormat houri = new SimpleDateFormat("HH:mm:ss");
-            System.out.println("Hora y fecha: "+hourdateFormat.format(date));
-            System.out.println("Hora y fecha: "+houri.format(hora));
-            asignacion.insertarAsignacion(asignacion.obtenerPlazasAsignadas(), datosCliente.get(3),Integer.valueOf(datosAsignacion.get(2)),date,hora);
-        }else{
+            System.out.println("Hora y fecha: " + hourdateFormat.format(date));
+            System.out.println("Hora y fecha: " + houri.format(hora));
+            asignacion.insertarAsignacion(asignacion.obtenerPlazasAsignadas(), datosCliente.get(3), Integer.valueOf(datosAsignacion.get(2)), date, hora);
+        } else {
             JOptionPane.showMessageDialog(null, "Ingrese el ID del usuario");
         }
 
 
     }//GEN-LAST:event_btnAsignaPlazaActionPerformed
+
+    private void txtidClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidClienteKeyTyped
+        // TODO add your handling code here:
+        validarSoloNumeros(evt);
+    }//GEN-LAST:event_txtidClienteKeyTyped
 
     /**
      * @param args the command line arguments

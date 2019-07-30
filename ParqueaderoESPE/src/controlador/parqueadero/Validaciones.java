@@ -5,13 +5,18 @@
  */
 package controlador.parqueadero;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Santiago Vivas
  */
 public class Validaciones {
-    
-    public Validaciones (){};
+
+    public Validaciones() {
+    }
+
+    ;
     public boolean validarID(int cedula) {
         int A[] = new int[10];
         boolean control;
@@ -74,13 +79,48 @@ public class Validaciones {
         }
         return letras;
     }
-    
-    public boolean campoVacio(String palabra){
-        if(palabra.isEmpty())
+
+    public boolean campoVacio(String palabra) {
+        if (palabra.isEmpty()) {
             return true;
-        else
+        } else {
             return false;
-                   
+        }
+
+    }
+
+    public boolean validarCampoCedula(String cedulaClinte) {
+        if (!campoVacio(cedulaClinte)) { //Vaida que el campo este lleno
+            if (!soloLetras(cedulaClinte)) { //Valida que solo ingrese letras
+                if (validarID(Integer.parseInt(cedulaClinte))) { //Valida la cedula
+                    return true;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Cédula no valida");
+                    return false;
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No ingrese letras");
+                return false;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrese la cédula");
+            return false;
+        }
+
+    }
+
+    public boolean validarDato(String datoCliente) {
+        if (!campoVacio(datoCliente)) { //Vaida que el campo este lleno
+            if (soloLetras(datoCliente)) { //Valida que solo ingrese letras
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "No ingrese numeros");
+                return false;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Llene todos los campos");
+            return false;
+        }
     }
 
 }
