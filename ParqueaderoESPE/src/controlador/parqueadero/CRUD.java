@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
@@ -129,48 +128,8 @@ public class CRUD {
             System.out.println(e);
             JOptionPane.showMessageDialog(null, " <<ERROR>>\n <<NO SE PUDO ACCEDER A LOS DATOS>>\n");
         }
-        if(plaza==null){
-            plaza=-1;
-        }
         return plaza;
     }
-    
-    public ArrayList<String> busqueda(Integer plaza){
-        ArrayList<String> datosCliente = new ArrayList<String>();
-        String resultado="";
-        Connection con = conexion.getConnection();
-        Statement st;
-        ResultSet rs;
-        String sql = "SELECT CLIENTE.CLIENTE_ID_BANNER,CLIENTE.CLIENTE_APELLIDOS,CLIENTE.CLIENTE_NOMBRES,CLIENTE.CLIENTE_SECCION,CLIENTE.CLIENTE_DISCAPACIDAD"
-                + " FROM CLIENTE,ASIGNACION_PLAZA "
-                + "WHERE ASIGNACION_PLAZA.ID_PLAZA="+plaza+" AND ASIGNACION_PLAZA.CLIENTE_ID_BANNER=CLIENTE.CLIENTE_ID_BANNER";
-        System.out.println(sql);
-        try {
-            st = con.createStatement();
-            rs = st.executeQuery(sql);
-            while (rs.next()) {
-                System.out.println(" CI: " + rs.getString(1));
-                System.out.println(" NOMBRE: " + rs.getString(2));
-                System.out.println(" UNIDAD DE TRABAJO: " + rs.getString(3));
-                System.out.println(" MOVILIDAD REDUCIDA: " + rs.getString(4));
-                System.out.println(" =================================\n");
-                resultado=rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4);
-                datosCliente.add(rs.getString(1));
-                datosCliente.add(rs.getString(2));
-                datosCliente.add(rs.getString(3));
-                datosCliente.add(rs.getString(4));
-                datosCliente.add(rs.getString(5));
-            }
-            //cerrar la conexion
-            st.close();
-            con.close();
-        } catch (SQLException e) {
-            System.out.println(e);
-            JOptionPane.showMessageDialog(null, " <<ERROR>>\n <<NO SE PUDO ACCEDER A LOS DATOS>>\n");
-        }
-        return datosCliente;
-    }
-    
     
     public void cambiarDisponibilidad(String id_plaza,Integer disponibilidad){
         Connection con = conexion.getConnection();
@@ -205,9 +164,8 @@ public class CRUD {
         try {
             st = con.createStatement();
             rs = st.executeQuery(sql);
-            System.out.println(rs.next());
-            contador=Integer.valueOf(rs.getString(1));
-            //System.out.println("AQUI EL CONTADOR="+contador);
+            rs.next();
+            contador=(Integer.valueOf(rs.getString(1)));
             //cerrar la conexion
             st.close();
             con.close();
@@ -224,8 +182,7 @@ public class CRUD {
         Statement st;
 
         //Crear sentencia sql
-        String sql = "INSERT INTO ASIGNACION_PLAZA VALUES ((SELECT COUNT(AS_NUMERO_PLAZA) FROM ASIGNACION_PLAZA)+1,'" + cliente_id_banner + "'," + id_plaza + ",(select current_date from dual),(select systimestamp from dual))";
-        System.out.println(sql);
+        String sql = "INSERT INTO ASIGNACION_PLAZA VALUES ('" + id_num_plaza + "','" + cliente_id_banner + "','" + id_plaza + "','" +fecha+ "','"+hora+ "')";
         try {
             st = con.createStatement();
             st.executeUpdate(sql);
@@ -235,7 +192,7 @@ public class CRUD {
             con.close();
             System.out.println("\n <<REGISTRO INSERTADO CON EXITO>>\n");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, " <<ERROR>>\n <<NO SE PUDO INSERTAR>>\n");
+            JOptionPane.showMessageDialog(null, " <<ERROR>>\n <<NO SE PUDO REGISTRAR EL CANTON>>\n");
         }
     }
     

@@ -5,11 +5,6 @@
  */
 package vista.parqueadero;
 
-import controlador.parqueadero.ControladorArchivos;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
-import modelo.parqueadero.AsignacionDAO;
-
 /**
  *
  * @author Cheshire
@@ -33,23 +28,25 @@ public class Busqueda extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnHome = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
-        btnAsignar = new javax.swing.JButton();
-        btnBusqueda = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        lblID = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
-        txtPlaza = new javax.swing.JTextField();
-        txtSeccion = new javax.swing.JTextField();
-        btnBuscar = new javax.swing.JButton();
-        txtID = new javax.swing.JTextField();
-        txtDiscapacidad = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        btnAsignaP1 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -61,49 +58,39 @@ public class Busqueda extends javax.swing.JFrame {
         jPanel1.setMaximumSize(new java.awt.Dimension(853, 46));
         jPanel1.setPreferredSize(new java.awt.Dimension(853, 46));
 
-        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/btnInicio.png"))); // NOI18N
-        btnHome.setMaximumSize(new java.awt.Dimension(90, 46));
-        btnHome.setMinimumSize(new java.awt.Dimension(90, 46));
-        btnHome.setPreferredSize(new java.awt.Dimension(90, 46));
-        btnHome.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/btnInicio.png"))); // NOI18N
+        jButton2.setMaximumSize(new java.awt.Dimension(90, 46));
+        jButton2.setMinimumSize(new java.awt.Dimension(90, 46));
+        jButton2.setPreferredSize(new java.awt.Dimension(90, 46));
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/btnEditar.png"))); // NOI18N
+        jButton3.setMaximumSize(new java.awt.Dimension(90, 46));
+        jButton3.setMinimumSize(new java.awt.Dimension(90, 46));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHomeActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
 
-        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/btnEditar.png"))); // NOI18N
-        btnEditar.setMaximumSize(new java.awt.Dimension(90, 46));
-        btnEditar.setMinimumSize(new java.awt.Dimension(90, 46));
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/btnAsignar.png"))); // NOI18N
+        jButton4.setMaximumSize(new java.awt.Dimension(90, 46));
+        jButton4.setMinimumSize(new java.awt.Dimension(90, 46));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
 
-        btnAsignar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/btnAsignar.png"))); // NOI18N
-        btnAsignar.setMaximumSize(new java.awt.Dimension(90, 46));
-        btnAsignar.setMinimumSize(new java.awt.Dimension(90, 46));
-        btnAsignar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAsignarActionPerformed(evt);
-            }
-        });
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/btnBuscar.png"))); // NOI18N
+        jButton5.setMaximumSize(new java.awt.Dimension(90, 46));
+        jButton5.setMinimumSize(new java.awt.Dimension(90, 46));
 
-        btnBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/btnBuscar.png"))); // NOI18N
-        btnBusqueda.setMaximumSize(new java.awt.Dimension(90, 46));
-        btnBusqueda.setMinimumSize(new java.awt.Dimension(90, 46));
-        btnBusqueda.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/btnEliminar.png"))); // NOI18N
+        jButton1.setAlignmentX(698.0F);
+        jButton1.setAlignmentY(150.0F);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBusquedaActionPerformed(evt);
-            }
-        });
-
-        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/btnEliminar.png"))); // NOI18N
-        btnEliminar.setAlignmentX(698.0F);
-        btnEliminar.setAlignmentY(150.0F);
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -113,36 +100,36 @@ public class Busqueda extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
-                .addComponent(btnAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(62, 62, 62)
-                .addComponent(btnBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57)
-                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60)
-                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(96, 96, 96))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnBusqueda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(btnAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jButton5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnHome.getAccessibleContext().setAccessibleName("btnInicio");
-        btnEditar.getAccessibleContext().setAccessibleName("btnEditar");
-        btnAsignar.getAccessibleContext().setAccessibleName("btnAsignar");
-        btnBusqueda.getAccessibleContext().setAccessibleName("btnBuscar");
-        btnEliminar.getAccessibleContext().setAccessibleName("btnEliminar");
+        jButton2.getAccessibleContext().setAccessibleName("btnInicio");
+        jButton3.getAccessibleContext().setAccessibleName("btnEditar");
+        jButton4.getAccessibleContext().setAccessibleName("btnAsignar");
+        jButton5.getAccessibleContext().setAccessibleName("btnBuscar");
+        jButton1.getAccessibleContext().setAccessibleName("btnEliminar");
 
         jLabel1.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
         jLabel1.setText("Búsqueda de Plaza");
@@ -159,50 +146,59 @@ public class Busqueda extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel5.setText("Unidad de Trabajo");
 
-        lblID.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        lblID.setText("ID");
+        jLabel6.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        jLabel6.setText("CI");
 
-        txtNombre.setBackground(new java.awt.Color(229, 229, 229));
-        txtNombre.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        txtNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(229, 229, 229), 5, true));
-        txtNombre.setPreferredSize(new java.awt.Dimension(364, 47));
+        jTextField1.setBackground(new java.awt.Color(229, 229, 229));
+        jTextField1.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(229, 229, 229), 5, true));
+        jTextField1.setPreferredSize(new java.awt.Dimension(364, 47));
 
-        txtPlaza.setBackground(new java.awt.Color(229, 229, 229));
-        txtPlaza.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        txtPlaza.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(229, 229, 229), 5, true));
-        txtPlaza.setPreferredSize(new java.awt.Dimension(364, 47));
-        txtPlaza.addActionListener(new java.awt.event.ActionListener() {
+        jTextField2.setBackground(new java.awt.Color(229, 229, 229));
+        jTextField2.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        jTextField2.setText("# Plaza");
+        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(229, 229, 229), 5, true));
+        jTextField2.setPreferredSize(new java.awt.Dimension(364, 47));
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPlazaActionPerformed(evt);
+                jTextField2ActionPerformed(evt);
             }
         });
 
-        txtSeccion.setBackground(new java.awt.Color(229, 229, 229));
-        txtSeccion.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        txtSeccion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(229, 229, 229), 1, true));
-        txtSeccion.setPreferredSize(new java.awt.Dimension(364, 47));
+        jTextField3.setBackground(new java.awt.Color(229, 229, 229));
+        jTextField3.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(229, 229, 229), 1, true));
+        jTextField3.setPreferredSize(new java.awt.Dimension(364, 47));
 
-        btnBuscar.setBackground(new java.awt.Color(0, 107, 229));
-        btnBuscar.setFont(new java.awt.Font("Lato", 0, 11)); // NOI18N
-        btnBuscar.setForeground(javax.swing.UIManager.getDefaults().getColor("CheckBoxMenuItem.selectionBackground"));
-        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/btnBusqueda.png"))); // NOI18N
-        btnBuscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 229), 6, true));
-        btnBuscar.setPreferredSize(new java.awt.Dimension(188, 25));
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+        btnAsignaP1.setBackground(new java.awt.Color(0, 107, 229));
+        btnAsignaP1.setFont(new java.awt.Font("Lato", 0, 11)); // NOI18N
+        btnAsignaP1.setForeground(javax.swing.UIManager.getDefaults().getColor("CheckBoxMenuItem.selectionBackground"));
+        btnAsignaP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/btnBusqueda.png"))); // NOI18N
+        btnAsignaP1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 127, 229), 6, true));
+        btnAsignaP1.setPreferredSize(new java.awt.Dimension(188, 25));
+        btnAsignaP1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
+                btnAsignaP1ActionPerformed(evt);
             }
         });
 
-        txtID.setBackground(new java.awt.Color(229, 229, 229));
-        txtID.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        txtID.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(229, 229, 229), 5, true));
-        txtID.setPreferredSize(new java.awt.Dimension(364, 47));
+        jLabel7.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        jLabel7.setText("Lugar:");
 
-        txtDiscapacidad.setBackground(new java.awt.Color(229, 229, 229));
-        txtDiscapacidad.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        txtDiscapacidad.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(229, 229, 229), 1, true));
-        txtDiscapacidad.setPreferredSize(new java.awt.Dimension(364, 47));
+        jTextField4.setBackground(new java.awt.Color(229, 229, 229));
+        jTextField4.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        jTextField4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(229, 229, 229), 5, true));
+        jTextField4.setPreferredSize(new java.awt.Dimension(364, 47));
+
+        jTextField5.setBackground(new java.awt.Color(229, 229, 229));
+        jTextField5.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        jTextField5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(229, 229, 229), 1, true));
+        jTextField5.setPreferredSize(new java.awt.Dimension(364, 47));
+
+        jComboBox1.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2" }));
+        jComboBox1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(229, 229, 229), 5, true));
+        jComboBox1.setPreferredSize(new java.awt.Dimension(229, 47));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -213,40 +209,43 @@ public class Busqueda extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(32, 32, 32)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(42, 42, 42)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(274, 274, 274))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(154, 154, 154)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(172, 172, 172))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(154, 154, 154)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(172, 172, 172))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addGap(110, 110, 110))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)))))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDiscapacidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSeccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel5)
+                                .addGap(110, 110, 110))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(164, 164, 164))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(248, 248, 248)
-                        .addComponent(jLabel2)
-                        .addGap(32, 32, 32)
-                        .addComponent(txtPlaza, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnAsignaP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(164, 164, 164)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -255,27 +254,29 @@ public class Busqueda extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPlaza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAsignaP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblID))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDiscapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
@@ -285,75 +286,41 @@ public class Busqueda extends javax.swing.JFrame {
         jLabel3.getAccessibleContext().setAccessibleName("lblNombre");
         jLabel4.getAccessibleContext().setAccessibleName("lblMovilidad");
         jLabel5.getAccessibleContext().setAccessibleName("lblUnidad");
-        lblID.getAccessibleContext().setAccessibleName("lblCI");
-        txtNombre.getAccessibleContext().setAccessibleName("txtNombre");
-        txtPlaza.getAccessibleContext().setAccessibleName("txtNumPlaza");
-        txtSeccion.getAccessibleContext().setAccessibleName("txtUnidad");
-        txtSeccion.getAccessibleContext().setAccessibleDescription("");
-        btnBuscar.getAccessibleContext().setAccessibleName("btnBusqueda");
-        btnBuscar.getAccessibleContext().setAccessibleDescription("");
-        txtID.getAccessibleContext().setAccessibleName("txtCI");
-        txtDiscapacidad.getAccessibleContext().setAccessibleName("txtMovilidad");
+        jLabel6.getAccessibleContext().setAccessibleName("lblCI");
+        jTextField1.getAccessibleContext().setAccessibleName("txtNombre");
+        jTextField2.getAccessibleContext().setAccessibleName("txtNumPlaza");
+        jTextField3.getAccessibleContext().setAccessibleName("txtUnidad");
+        jTextField3.getAccessibleContext().setAccessibleDescription("");
+        btnAsignaP1.getAccessibleContext().setAccessibleName("btnBusqueda");
+        btnAsignaP1.getAccessibleContext().setAccessibleDescription("");
+        jLabel7.getAccessibleContext().setAccessibleName("lblLugar");
+        jTextField4.getAccessibleContext().setAccessibleName("txtCI");
+        jTextField5.getAccessibleContext().setAccessibleName("txtMovilidad");
+        jComboBox1.getAccessibleContext().setAccessibleName("cbLugar");
+        jComboBox1.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarActionPerformed
-        dispose();
-        Asigna asigna = new Asigna();
-        asigna.show();
-    }//GEN-LAST:event_btnAsignarActionPerformed
-
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        dispose();
-        Actualizacion actualizacion = new Actualizacion();
-        actualizacion.show();
-    }//GEN-LAST:event_btnEditarActionPerformed
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        dispose();
-        Elimina elimina = new Elimina();
-        elimina.show();
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
-    private void limpiarDatos() {
-        txtPlaza.setText("");//id
-        txtID.setText(""); //Nombre
-        txtDiscapacidad.setText(""); //Movilidad Reducida
-        txtSeccion.setText(""); //Unidad de Trabajo
-    }
-    
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        AsignacionDAO asignacion = new AsignacionDAO();
-        if(!txtPlaza.getText().isEmpty()){
-            ArrayList<String> datosCliente = new ArrayList<String>();
-            datosCliente=asignacion.busqueda(Integer.valueOf(txtPlaza.getText()));
-            txtID.setText(datosCliente.get(0).toString());
-            txtNombre.setText(datosCliente.get(1).toString()+" "+datosCliente.get(2));
-            txtSeccion.setText(datosCliente.get(3));
-            txtDiscapacidad.setText(datosCliente.get(4));
-            ControladorArchivos control = new ControladorArchivos();
-            control.generarQR("ID: "+txtID.getText()+"Nombre: "+txtNombre.getText()+"Seccion: "+ txtSeccion.getText()+"Discapacidad: "+txtDiscapacidad.getText());
-        }else{
-            JOptionPane.showMessageDialog(null,"Ingrese Numero de Plaza");
-        }
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
-    private void txtPlazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPlazaActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPlazaActionPerformed
+    }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
-        dispose();
-        Home home = new Home();
-        home.show();
-    }//GEN-LAST:event_btnHomeActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void btnBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusquedaActionPerformed
-        dispose();
-        Busqueda busqueda = new Busqueda();
-        busqueda.show();
-    }//GEN-LAST:event_btnBusquedaActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnAsignaP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignaP1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAsignaP1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -406,23 +373,25 @@ public class Busqueda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnAsignar;
-    public javax.swing.JButton btnBuscar;
-    public javax.swing.JButton btnBusqueda;
-    public javax.swing.JButton btnEditar;
-    public javax.swing.JButton btnEliminar;
-    public javax.swing.JButton btnHome;
+    private javax.swing.JButton btnAsignaP1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblID;
-    public javax.swing.JTextField txtDiscapacidad;
-    private javax.swing.JTextField txtID;
-    public javax.swing.JTextField txtNombre;
-    public javax.swing.JTextField txtPlaza;
-    public javax.swing.JTextField txtSeccion;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }

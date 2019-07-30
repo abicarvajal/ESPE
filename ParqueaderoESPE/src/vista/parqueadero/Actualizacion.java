@@ -7,9 +7,6 @@ package vista.parqueadero;
 
 import controlador.parqueadero.CRUD;
 import controlador.parqueadero.ControladorArchivos;
-import controlador.parqueadero.ControladorAsignacion;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import modelo.parqueadero.Cliente;
 
 /**
@@ -23,35 +20,7 @@ public class Actualizacion extends javax.swing.JFrame {
      */
     public Actualizacion() {
         initComponents();
-        noPermitirEditarDatos();
         
-    }
-    public void noPermitirEditarDatos() {
-        txtApellidos.setEditable(false);
-        txtNombre.setEditable(false);
-        txtSeccion.setEditable(false);
-        //cbDiscapacidad.setEditable(false);
-        cbDiscapacidad.disable();
-
-    }
-
-    public void PermitirEditarDatos() {
-        txtApellidos.setEditable(true);
-        txtNombre.setEditable(true);
-        txtSeccion.setEditable(true);
-        // cbDiscapacidad.setEditable(true);
-        cbDiscapacidad.enable();
-    }
-
-    private void colocarDatos(ArrayList<String> datos) {
-        txtNombre.setText(datos.get(0));
-        txtApellidos.setText(datos.get(1)); //Nombre
-        if (datos.get(2) == "S") {
-            cbDiscapacidad.setSelectedItem("S"); //Movilidad Reducida
-        } else {
-            cbDiscapacidad.setSelectedItem("N");;
-        }
-        txtSeccion.setText(datos.get(3)); //Unidad de Trabajo
     }
     CRUD crud = new CRUD();
     /**
@@ -77,11 +46,10 @@ public class Actualizacion extends javax.swing.JFrame {
         txtApellidos = new javax.swing.JTextField();
         txtID = new javax.swing.JTextField();
         txtSeccion = new javax.swing.JTextField();
-        cbDiscapacidad = new javax.swing.JComboBox<String>();
+        cbDiscapacidad = new javax.swing.JComboBox<>();
         btnGuardar = new javax.swing.JButton();
         lblApellidos = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        btnConsultar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -195,14 +163,10 @@ public class Actualizacion extends javax.swing.JFrame {
         txtApellidos.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         txtApellidos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(229, 229, 229), 5, true));
         txtApellidos.setPreferredSize(new java.awt.Dimension(364, 47));
-        txtApellidos.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtApellidosKeyTyped(evt);
-            }
-        });
 
         txtID.setBackground(new java.awt.Color(229, 229, 229));
         txtID.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        txtID.setText("CI");
         txtID.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(229, 229, 229), 5, true));
         txtID.setPreferredSize(new java.awt.Dimension(364, 47));
 
@@ -215,14 +179,9 @@ public class Actualizacion extends javax.swing.JFrame {
                 txtSeccionActionPerformed(evt);
             }
         });
-        txtSeccion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtSeccionKeyTyped(evt);
-            }
-        });
 
         cbDiscapacidad.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        cbDiscapacidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "S", "N" }));
+        cbDiscapacidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "S", "N" }));
         cbDiscapacidad.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(229, 229, 229), 5, true));
         cbDiscapacidad.setPreferredSize(new java.awt.Dimension(229, 47));
 
@@ -245,18 +204,6 @@ public class Actualizacion extends javax.swing.JFrame {
         txtNombre.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         txtNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(229, 229, 229), 5, true));
         txtNombre.setPreferredSize(new java.awt.Dimension(364, 47));
-        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNombreKeyTyped(evt);
-            }
-        });
-
-        btnConsultar.setText("Consultar");
-        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -286,9 +233,7 @@ public class Actualizacion extends javax.swing.JFrame {
                                     .addComponent(txtSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cbDiscapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                        .addGap(111, 111, 111))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -304,8 +249,7 @@ public class Actualizacion extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblId)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -382,56 +326,6 @@ public class Actualizacion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSeccionActionPerformed
 
-    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        // TODO add your handling code here:
-        
-        String idCliente;
-        ArrayList<String> datosCliente = new ArrayList<>();
-        ControladorAsignacion controladorAsignacion = new ControladorAsignacion();
-        idCliente = txtID.getText();
-        System.out.println(idCliente.charAt(0));
-
-        if(idCliente.length()==9 && idCliente.charAt(0) == 'L' || idCliente.charAt(0) == 'l'){
-            //datosCliente = controladorAsignacion.obtenerDatosCliente(idCliente);
-            //datosCliente.add(idCliente);
-            txtID.setText(idCliente.toUpperCase());
-            datosCliente.add("1");
-            datosCliente.add("2");
-            datosCliente.add("N");
-            datosCliente.add("4");
-            datosCliente.add("5");
-            colocarDatos(datosCliente);
-            PermitirEditarDatos();
-        }else{
-            JOptionPane.showMessageDialog(null, "ID NO VALIDO");
-        }
-        
-    }//GEN-LAST:event_btnConsultarActionPerformed
-
-    public void mostrarMensajeSoloLetras(java.awt.event.KeyEvent evt) {
-        char validar = evt.getKeyChar();
-        if (Character.isDigit(validar)) {
-            getToolkit().beep();
-            evt.consume();
-            JOptionPane.showMessageDialog(rootPane, "Ingrese solo letras");
-        }
-    }
-    
-    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
-        // TODO add your handling code here:
-        mostrarMensajeSoloLetras(evt);
-    }//GEN-LAST:event_txtNombreKeyTyped
-
-    private void txtApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidosKeyTyped
-        // TODO add your handling code here:
-        mostrarMensajeSoloLetras(evt);
-    }//GEN-LAST:event_txtApellidosKeyTyped
-
-    private void txtSeccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSeccionKeyTyped
-        // TODO add your handling code here:
-        mostrarMensajeSoloLetras(evt);
-    }//GEN-LAST:event_txtSeccionKeyTyped
-
     /**
      * @param args the command line arguments
      */
@@ -476,7 +370,6 @@ public class Actualizacion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnAsigna;
-    private javax.swing.JButton btnConsultar;
     public static javax.swing.JButton btnEditar;
     public static javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnGuardar;

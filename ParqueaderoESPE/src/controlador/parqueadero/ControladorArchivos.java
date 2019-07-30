@@ -40,9 +40,9 @@ public class ControladorArchivos {
         MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
     }
     
-    public void generarQR(String datos){
+    public void generarQR(){
         try {
-            generateQRCodeImage(datos, 350, 350, QR_CODE_IMAGE_PATH);
+            generateQRCodeImage("Abigail Carvajal", 350, 350, QR_CODE_IMAGE_PATH);
         } catch (WriterException e) {
             System.out.println("Could not generate QR Code, WriterException :: " + e.getMessage());
         } catch (IOException e) {
