@@ -329,7 +329,7 @@ public class Asigna extends javax.swing.JFrame {
 
     public void validarSoloNumeros(java.awt.event.KeyEvent evt) {
         char validar = evt.getKeyChar();
-        if (!Character.isLetterOrDigit(validar) || !Character.isDigit(validar) ) {
+        if (!Character.isLetterOrDigit(validar) || !Character.isDigit(validar)) {
             getToolkit().beep();
             evt.consume();
             //JOptionPane.showMessageDialog(rootPane, "No ingrese letras");
@@ -355,14 +355,14 @@ public class Asigna extends javax.swing.JFrame {
             datosCliente = controladorAsignacion.obtenerDatosCliente(idCliente);
             datosCliente.add(idCliente);
             /*datosCliente.add("1");
-            datosCliente.add("2");
-            datosCliente.add("S");
-            datosCliente.add("4");
-            datosCliente.add("5");*/
+             datosCliente.add("2");
+             datosCliente.add("S");
+             datosCliente.add("4");
+             datosCliente.add("5");*/
             colocarDatos(datosCliente);
             btnAsignaPlaza.setEnabled(true);
             txtidCliente.setEditable(false);
-        }else{
+        } else {
             txtidCliente.setText("");
         }
 

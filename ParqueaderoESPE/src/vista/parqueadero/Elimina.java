@@ -6,6 +6,7 @@
 package vista.parqueadero;
 
 import controlador.parqueadero.CRUD;
+import controlador.parqueadero.Validaciones;
 
 /**
  *
@@ -20,7 +21,15 @@ public class Elimina extends javax.swing.JFrame {
         initComponents();
     }
     CRUD crud = new CRUD();
-    
+
+    public void validarSoloNumeros(java.awt.event.KeyEvent evt) {
+        char validar = evt.getKeyChar();
+        if (!Character.isLetterOrDigit(validar) || !Character.isDigit(validar)) {
+            getToolkit().beep();
+            evt.consume();
+            //JOptionPane.showMessageDialog(rootPane, "No ingrese letras");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -138,9 +147,13 @@ public class Elimina extends javax.swing.JFrame {
 
         txtID.setBackground(new java.awt.Color(229, 229, 229));
         txtID.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        txtID.setText("CI");
         txtID.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(229, 229, 229), 5, true));
         txtID.setPreferredSize(new java.awt.Dimension(364, 47));
+        txtID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIDKeyTyped(evt);
+            }
+        });
 
         btnElimina.setBackground(new java.awt.Color(0, 107, 229));
         btnElimina.setFont(new java.awt.Font("Lato", 0, 11)); // NOI18N
@@ -210,8 +223,21 @@ public class Elimina extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnEliminaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminaActionPerformed
-        crud.eliminarParqueadero(txtID.getText());
+        String idCliente = txtID.getText();
+        Validaciones validar = new Validaciones();
+
+        if (validar.validarCampoCedula(idCliente)) {
+            crud.eliminarParqueadero(txtID.getText());
+        } else {
+            txtID.setText("");
+        }
+
     }//GEN-LAST:event_btnEliminaActionPerformed
+
+    private void txtIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyTyped
+        // TODO add your handling code here:
+        validarSoloNumeros(evt);
+    }//GEN-LAST:event_txtIDKeyTyped
 
     /**
      * @param args the command line arguments
