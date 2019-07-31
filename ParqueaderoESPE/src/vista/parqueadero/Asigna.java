@@ -389,11 +389,7 @@ public class Asigna extends javax.swing.JFrame {
             System.out.println(datosAsignacion);
             JOptionPane.showMessageDialog(null, "Seccion: " + datosAsignacion.get(0) + "\nLugar: Edicio " + datosAsignacion.get(1) + "\nN° de Plaza: " + datosAsignacion.get(2));
             asignacion.cambiarDisponibilidad(datosAsignacion.get(2));
-            DateFormat hourdateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            DateFormat houri = new SimpleDateFormat("HH:mm:ss");
-            System.out.println("Hora y fecha: " + hourdateFormat.format(date));
-            System.out.println("Hora y fecha: " + houri.format(hora));
-            asignacion.insertarAsignacion(asignacion.obtenerPlazasAsignadas(), datosCliente.get(3), Integer.valueOf(datosAsignacion.get(2)), date, hora);
+            asignacion.insertarAsignacion(asignacion.obtenerPlazasAsignadas(), datosCliente.get(4), Integer.valueOf(datosAsignacion.get(2)));
         } else {
             JOptionPane.showMessageDialog(null, "Ingrese el ID del usuario");
         }

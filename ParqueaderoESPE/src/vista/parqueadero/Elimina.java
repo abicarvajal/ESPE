@@ -231,7 +231,7 @@ public class Elimina extends javax.swing.JFrame {
         } else {
             txtID.setText("");
         }
-
+        
     }//GEN-LAST:event_btnEliminaActionPerformed
 
     private void txtIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyTyped

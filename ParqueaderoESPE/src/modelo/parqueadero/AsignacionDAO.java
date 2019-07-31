@@ -36,9 +36,9 @@ public class AsignacionDAO {
         Connection con = conexion.getConnection();
         Statement st;
         ResultSet rs;
-        //String sql = "SELECT * FROM PARQUEADERO WHERE ID = " + id + " AND lugar = " + lugar;
-        String sql = "SELECT CLIENTE_APELLIDOS, CLIENTE_NOMBRES, CLIENTE_DISCAPACIDAD, CLIENTE_SECCION "
-                + "FROM CLIENTE WHERE CLIENTE_ID_BANNER= '" + id + "'";
+        String sql = "SELECT CLIENTE.CLIENTE_APELLIDOS, CLIENTE.CLIENTE_NOMBRES, CLIENTE.CLIENTE_DISCAPACIDAD, CLIENTE.CLIENTE_SECCION,PLAZA.ID_PLAZA,parqueadero.parqueadero_nombre "
+                + "FROM CLIENTE,ASIGNACION_PLAZA,PLAZA,PARQUEADERO WHERE ASIGNACION_PLAZA.CLIENTE_CI='" + id + "' AND asignacion_plaza.cliente_ci=CLIENTE.CLIENTE_CI AND parqueadero.parqueadero_id=plaza.parqueadero_id AND asignacion_plaza.id_plaza=plaza.id_plaza";
+        System.out.println(sql);
         try {
             st = con.createStatement();
             rs = st.executeQuery(sql);
@@ -52,7 +52,8 @@ public class AsignacionDAO {
                 datosCliente.add(rs.getString(2)); //Apellido
                 datosCliente.add(rs.getString(3)); //Movilidad Reducida
                 datosCliente.add(rs.getString(4)); //Seccion Trabajo 
-                
+                datosCliente.add(rs.getString(5)); //Plaza
+                datosCliente.add(rs.getString(6)); //Nombre parqueadero
             }
             //cerrar la conexion
             st.close();
@@ -78,78 +79,112 @@ public class AsignacionDAO {
             discapacidad=1;
             switch(seccion){
                 case "ADMISIÓN Y REGISTRO":
-                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        plaza=plazaAsignada("DOCENCIA",discapacidad);
                         lugarParqueo="DOCENCIA";
                         datosAsignacion.add(lugarParqueo);
                         datosAsignacion.add(String.valueOf(plaza));
                     break;
                 case "BIENESTAR ESTUDIANTIL":
-                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        plaza=plazaAsignada("DOCENCIA",discapacidad);
                         lugarParqueo="DOCENCIA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break;
                 case "DPTO. CIENCIAS ECON.  ADMIN. COMER":
-                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        plaza=plazaAsignada("DOCENCIA",discapacidad);
                         lugarParqueo="DOCENCIA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break;
                 case "DPTO. CIENCIAS EXACTAS":
-                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        plaza=plazaAsignada("DOCENCIA",discapacidad);
                         lugarParqueo="DOCENCIA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break;
                 case "DPTO. CIENCIAS HUMANAS Y SOCIALES":
-                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        plaza=plazaAsignada("DOCENCIA",discapacidad);
                         lugarParqueo="DOCENCIA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break;    
                 case "DPTO. SEGURIDAD Y DEFENSA":
-                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        plaza=plazaAsignada("DOCENCIA",discapacidad);
                         lugarParqueo="DOCENCIA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break; 
                 case "EDUCACIÓN PRESENCIAL":
-                       plaza=asignarPlaza("DOCENCIA",discapacidad);
+                       plaza=plazaAsignada("DOCENCIA",discapacidad);
                        lugarParqueo="DOCENCIA";
+                       datosAsignacion.add(lugarParqueo);
+                       datosAsignacion.add(String.valueOf(plaza));
                     break;
                 case "UNIDAD ADMISION REGISTRO":
-                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        plaza=plazaAsignada("DOCENCIA",discapacidad);
                         lugarParqueo="DOCENCIA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break; 
                  case "BIBLIOTECA":
-                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        plaza=plazaAsignada("BIBLIOTECA",discapacidad);
                         lugarParqueo="BIBLIOTECA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break;
                 case "CENTRO DE NANOCIENCIA Y NANOTEC.":
-                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        plaza=plazaAsignada("BIBLIOTECA",discapacidad);
                         lugarParqueo="BIBLIOTECA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break;
                 case "CENTRO DE POSTGRADOS":
-                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        plaza=plazaAsignada("BIBLIOTECA",discapacidad);
                         lugarParqueo="BIBLIOTECA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break;
                 case "CENTRO EDUCACIÓN CONTINUA":
-                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        plaza=plazaAsignada("BIBLIOTECA",discapacidad);
                         lugarParqueo="BIBLIOTECA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break;
                 case "DPTO. CIENCIAS DE LA COMPUTACION":
-                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        plaza=plazaAsignada("BIBLIOTECA",discapacidad);
                         lugarParqueo="BIBLIOTECA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break;    
                 case "DPTO. DE CIENCIAS DE LA VIDA":
-                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        plaza=plazaAsignada("BIBLIOTECA",discapacidad);
                         lugarParqueo="BIBLIOTECA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break; 
                 case "DPTO.CIENCIAS ENERGIA Y MECANICA":
-                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        plaza=plazaAsignada("BIBLIOTECA",discapacidad);
                         lugarParqueo="BIBLIOTECA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break;
                 case "DPTO. ELECTRICA Y ELECTRONICA":
-                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        plaza=plazaAsignada("BIBLIOTECA",discapacidad);
                         lugarParqueo="BIBLIOTECA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break; 
                 case "INSTITUTO DE IDIOMAS":
-                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        plaza=plazaAsignada("BIBLIOTECA",discapacidad);
                         lugarParqueo="BIBLIOTECA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break; 
                 case "TECNOLOGIA DE INF.Y COMUNICACIONES":
-                       plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                       plaza=plazaAsignada("BIBLIOTECA",discapacidad);
                        lugarParqueo="BIBLIOTECA";
+                       datosAsignacion.add(lugarParqueo);
+                       datosAsignacion.add(String.valueOf(plaza));
                     break;
                 }      
         }else if(datosCliente.get(2).compareTo("N") == 1){
@@ -157,76 +192,106 @@ public class AsignacionDAO {
             discapacidad =0;
             switch(seccion){
                 case "ADMISIÓN Y REGISTRO":
-                       plaza=asignarPlaza("DOCENCIA",discapacidad);
+                       plaza=plazaAsignada("DOCENCIA",discapacidad);
                        lugarParqueo="DOCENCIA";
+                       datosAsignacion.add(lugarParqueo);
+                       datosAsignacion.add(String.valueOf(plaza));
                     break;
                 case "BIENESTAR ESTUDIANTIL":
-                       plaza=asignarPlaza("DOCENCIA",discapacidad);
+                       plaza=plazaAsignada("DOCENCIA",discapacidad);
                        lugarParqueo="DOCENCIA";
+                       datosAsignacion.add(lugarParqueo);
+                       datosAsignacion.add(String.valueOf(plaza));
                     break;
                 case "DPTO. CIENCIAS ECON.  ADMIN. COMER":
-                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        plaza=plazaAsignada("DOCENCIA",discapacidad);
                         lugarParqueo="DOCENCIA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break;
                 case "DPTO. CIENCIAS EXACTAS":
-                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        plaza=plazaAsignada("DOCENCIA",discapacidad);
                         lugarParqueo="DOCENCIA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break;
                 case "DPTO. CIENCIAS HUMANAS Y SOCIALES":
-                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        plaza=plazaAsignada("DOCENCIA",discapacidad);
                         lugarParqueo="DOCENCIA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break;    
                 case "DPTO. SEGURIDAD Y DEFENSA":
-                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        plaza=plazaAsignada("DOCENCIA",discapacidad);
                         lugarParqueo="DOCENCIA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break; 
                 case "EDUCACIÓN PRESENCIAL":
-                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        plaza=plazaAsignada("DOCENCIA",discapacidad);
                         lugarParqueo="DOCENCIA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break;
                 case "UNIDAD ADMISION REGISTRO":
-                        plaza=asignarPlaza("DOCENCIA",discapacidad);
+                        plaza=plazaAsignada("DOCENCIA",discapacidad);
                         lugarParqueo="DOCENCIA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break; 
                  case "BIBLIOTECA":
-                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        plaza=plazaAsignada("BIBLIOTECA",discapacidad);
                         lugarParqueo="BIBLIOTECA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break;
                 case "CENTRO DE NANOCIENCIA Y NANOTEC.":
-                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        plaza=plazaAsignada("BIBLIOTECA",discapacidad);
                         lugarParqueo="BIBLIOTECA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break;
                 case "CENTRO DE POSTGRADOS":
-                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        plaza=plazaAsignada("BIBLIOTECA",discapacidad);
                         lugarParqueo="BIBLIOTECA";
                     break;
                 case "CENTRO EDUCACIÓN CONTINUA":
-                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        plaza=plazaAsignada("BIBLIOTECA",discapacidad);
                         lugarParqueo="BIBLIOTECA";
                     break;
                 case "DPTO. CIENCIAS DE LA COMPUTACION":
-                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        plaza=plazaAsignada("BIBLIOTECA",discapacidad);
                         lugarParqueo="BIBLIOTECA";
                     break;    
                 case "DPTO. DE CIENCIAS DE LA VIDA":
-                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
-                        lugarParqueo="BIBLIOTECA";
+                        plaza=plazaAsignada("BIBLIOTECA",discapacidad);
+                        lugarParqueo="DOCENCIA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break; 
                 case "DPTO.CIENCIAS ENERGIA Y MECANICA":
-                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
-                        lugarParqueo="BIBLIOTECA";
+                        plaza=plazaAsignada("BIBLIOTECA",discapacidad);
+                        lugarParqueo="DOCENCIA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break;
                 case "DPTO. ELECTRICA Y ELECTRONICA":
-                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
-                        lugarParqueo="BIBLIOTECA";
+                        plaza=plazaAsignada("BIBLIOTECA",discapacidad);
+                        lugarParqueo="DOCENCIA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break; 
                 case "INSTITUTO DE IDIOMAS":
-                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        plaza=plazaAsignada("BIBLIOTECA",discapacidad);
                         lugarParqueo="BIBLIOTECA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break; 
                 case "TECNOLOGIA DE INF.Y COMUNICACIONES":
-                        plaza=asignarPlaza("BIBLIOTECA",discapacidad);
+                        plaza=plazaAsignada("BIBLIOTECA",discapacidad);
                         lugarParqueo="BIBLIOTECA";
+                        datosAsignacion.add(lugarParqueo);
+                        datosAsignacion.add(String.valueOf(plaza));
                     break;
                 } 
             
@@ -244,11 +309,11 @@ public class AsignacionDAO {
         return contador;
     }
     
-    public void insertarAsignacion(Integer id_num_plaza,String cliente_id_banner,Integer id_plaza,Date fecha,Date hora){
-        crud.asignarQuery(id_num_plaza,cliente_id_banner,id_plaza,fecha,hora);
+    public void insertarAsignacion(Integer id_num_plaza,String cliente_id_banner,Integer id_plaza){
+        crud.asignarQuery(id_num_plaza,cliente_id_banner,id_plaza);
     }
     
-    public Integer asignarPlaza(String seccion,Integer disponibilidad){
+    public Integer plazaAsignada(String seccion,Integer disponibilidad){
         Integer plaza=0;    
         plaza=crud.asignaPlaza(seccion,1,disponibilidad);
         return plaza;

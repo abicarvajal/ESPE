@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
@@ -55,13 +56,36 @@ public class CRUD {
             JOptionPane.showMessageDialog(null, " <<ERROR>>\n <<NO SE PUDO ACTUALIZAR EL USUARIO>>\n");
         }
     }
-
-    public void consultarParqueadero(String id, String lugar) {
-
+    
+    public Integer consultarPlaza(String CI){
+        Integer plaza = null;
         Connection con = conexion.getConnection();
         Statement st;
         ResultSet rs;
-        String sql = "SELECT * FROM CLIENTE WHERE CLIENTE_ID_BANNER = '"+id+"'";
+        String sql = "SELECT ID_PLAZA FROM ASIGNACION_PLAZA WHERE CLIENTE_CI = '"+CI+"'";
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery(sql);
+            while (rs.next()) {
+                plaza=rs.getInt(1);//System.out.println(" CI: " + rs.getString(1));
+            }
+            //cerrar la conexion
+            st.close();
+            con.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, " <<ERROR>>\n <<NO SE PUDO ACCEDER A LOS DATOS>>\n");
+        }
+        return plaza;
+    }
+    
+
+    public ArrayList<String> consultarParqueadero(String ci) {
+        ArrayList<String> datos = new ArrayList<String>();
+        Connection con = conexion.getConnection();
+        Statement st;
+        ResultSet rs;
+        String sql = "SELECT * FROM CLIENTE WHERE CLIENTE_CI = '"+ci+"'";
         try {
             st = con.createStatement();
             rs = st.executeQuery(sql);
@@ -79,14 +103,14 @@ public class CRUD {
             System.out.println(e);
             JOptionPane.showMessageDialog(null, " <<ERROR>>\n <<NO SE PUDO ACCEDER A LOS DATOS>>\n");
         }
-
+        return datos;
     }
     
     public void eliminarParqueadero(String id){
         Connection con = conexion.getConnection();
         Statement st;
-
-        String sql = "DELETE FROM CLIENTE WHERE CLIENTE_ID_BANNER = '" + id+"'";
+        Integer plaza = consultarPlaza(id);
+        String sql = "DELETE AS_NUMERO_PLAZA FROM ASIGNACION_PLAZA WHERE CLIENTE_CI = '" + id+"'";
         try {
             st = con.createStatement();
             System.out.println(sql);
@@ -103,7 +127,7 @@ public class CRUD {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, " <<ERROR>>\n <<NO SE PUDO ELIMINAR LOS DATOS>>\n");
         }
-        
+        cambiarDisponibilidad(Integer.toString(plaza),1);
     }
     
     public Integer asignaPlaza(String seccion,Integer disponibilidad,Integer discapacidad){
@@ -121,7 +145,6 @@ public class CRUD {
             System.out.println(rs.next());
             plaza = Integer.valueOf(rs.getString(1));
             System.out.println(plaza);
-            
             st.close();
             con.close();
         } catch (SQLException e) {
@@ -176,13 +199,14 @@ public class CRUD {
         return contador;
     }
     
-    public void asignarQuery(Integer id_num_plaza,String cliente_id_banner,Integer id_plaza,Date fecha,Date hora){
+    public void asignarQuery(Integer id_num_plaza,String cliente_id_banner,Integer id_plaza){
         //cargar la conexion
         Connection con = conexion.getConnection();
         Statement st;
 
         //Crear sentencia sql
-        String sql = "INSERT INTO ASIGNACION_PLAZA VALUES ('" + id_num_plaza + "','" + cliente_id_banner + "','" + id_plaza + "','" +fecha+ "','"+hora+ "')";
+        String sql = "INSERT INTO ASIGNACION_PLAZA VALUES ((SELECT COUNT(AS_NUMERO_PLAZA) FROM ASIGNACION_PLAZA)+1,'"+cliente_id_banner+"'," + id_plaza + ",(select current_date from dual),(select to_char(sysdate, 'HH24:MI:SS') from dual))";
+        System.out.println(sql);
         try {
             st = con.createStatement();
             st.executeUpdate(sql);
@@ -192,7 +216,7 @@ public class CRUD {
             con.close();
             System.out.println("\n <<REGISTRO INSERTADO CON EXITO>>\n");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, " <<ERROR>>\n <<NO SE PUDO REGISTRAR EL CANTON>>\n");
+            JOptionPane.showMessageDialog(null, " <<ERROR>>\n <<NO SE PUDO REGISTRAR>>\n");
         }
     }
     

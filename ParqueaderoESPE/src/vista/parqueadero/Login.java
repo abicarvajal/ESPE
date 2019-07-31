@@ -159,7 +159,8 @@ public class Login extends javax.swing.JFrame {
             else{
                 String guardado = crud.recuperarPassword(usuario) ;
                 System.out.println(guardado);
-                boolean matched = login.validarPassword(password,guardado);
+                boolean matched ;
+                matched = login.validarPassword(password,guardado);
                 System.out.println(matched);
 
                 if(matched==true){
